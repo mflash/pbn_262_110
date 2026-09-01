@@ -33,15 +33,21 @@ int main()
 
     // Concatenando strings: strcat
     strcpy(str1, "abc");
-    strcpy(str2, "def");
-    printf("str1: %s\n", str1);
-    printf("str2: %s\n", str2);
-    strcat(str1, str2); // concatena str1 com str2 => "abcdef"
-    strcat(str2, str1); // novamente: agora estoura a capacidade de str2 e invade str1!
-    str1[0] = '@';
-    printf("Depois de strcat:\n");
+    strcpy(str2, "defg");
     printf("str1: %p %s\n", str1, str1);
     printf("str2: %p %s\n", str2, str2);
+    printf("\n");
+    strcat(str1, str2);
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
+    printf("\n");
+    // Aqui "estoura" o espaço de str2, e acaba sobrescrevendo
+    // o str1, pois str1 está logo depois de str2 na memória
+    // (no Linux, esse comportamento pode ser diferente em outros
+    // sistemas!)  
+    strcat(str2, str1);
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
 
     // Comparando strings: strcmp
     // (MESMO comportamento do compareTo do Java)
