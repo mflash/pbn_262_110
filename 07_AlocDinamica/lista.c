@@ -26,6 +26,7 @@ void inicializaLista(Lista* lista) {
 void insereFinal(Lista* lista, int valor) {
   Nodo* novo = malloc(sizeof(Nodo));
   novo->dado = valor;
+  novo->prox = NULL;  // importante!
   // Se a lista não existe...
   if (lista->head == NULL) {
     lista->head = novo;
