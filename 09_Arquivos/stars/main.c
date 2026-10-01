@@ -61,6 +61,9 @@ void drawAll() {
     glPointSize(1);
     glBegin(GL_POINTS);
 
+	// Faça um for na sua lista e envie as coordenadas
+	// de cada estrela no glVertex3f!
+	
     glColor3ub(255, 255, 255); // white
     // below: x, y, z
     glVertex3f(0,0,0);
