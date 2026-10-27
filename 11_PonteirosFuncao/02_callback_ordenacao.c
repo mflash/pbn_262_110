@@ -3,39 +3,45 @@
 // Definição do tipo para simplificar a sintaxe
 typedef int (*Comparador)(int, int);
 
-int ascendente(int a, int b) {
-    return a - b;
-}
-int descendente(int a, int b) {
-    return b - a;
+int ascendente(int a, int b) { return a - b; }
+int descendente(int a, int b) { return b - a; }
+int ascendente2(int a, int b) {
+  if (a == b) return 0;
+  if (a > b) return 1;
+  if (a < b) return -1;
 }
 
-void ordenar(int *vetor, int tamanho, Comparador comp) {
-    for (int i = 0; i < tamanho - 1; i++) {
-        for (int j = i + 1; j < tamanho; j++) {
-            if (comp(vetor[i], vetor[j]) > 0) {
-                int temp = vetor[i];
-                vetor[i] = vetor[j];
-                vetor[j] = temp;
-            }
-        }
+void ordenar(int* vetor, int tamanho, Comparador comp) {
+  for (int i = 0; i < tamanho - 1; i++) {
+    for (int j = i + 1; j < tamanho; j++) {
+      if (comp(vetor[i], vetor[j]) > 0) {
+        int temp = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = temp;
+      }
     }
+  }
 }
 
-void imprimir(int *vetor, int tamanho) {
-    for (int i = 0; i < tamanho; i++) printf("%d ", vetor[i]);
-    printf("\n");
+void imprimir(int* vetor, int tamanho) {
+  for (int i = 0; i < tamanho; i++) printf("%d ", vetor[i]);
+  printf("\n");
 }
 
 int main() {
-    int dados[] = {5, 2, 9, 1, 56};
-    int n = sizeof(dados) / sizeof(dados[0]);
+  int dados[] = {5, 2, 9, 1, 56};
+  // Lembre-se que isto só funciona na função onde o vetor
+  // é DECLARADO!
+  int n = sizeof(dados) / sizeof(dados[0]);
 
-    ordenar(dados, n, ascendente);
-    imprimir(dados, n);
+  ordenar(dados, n, ascendente);
+  imprimir(dados, n);
 
-    ordenar(dados, n, descendente);
-    imprimir(dados, n);
+  ordenar(dados, n, descendente);
+  imprimir(dados, n);
 
-    return 0;
+  ordenar(dados, n, ascendente2);
+  imprimir(dados, n);
+
+  return 0;
 }
