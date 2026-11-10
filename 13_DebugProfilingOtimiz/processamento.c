@@ -39,8 +39,8 @@ void funcao_lenta_otimizada(int n) {
 int main(void) {
   printf("Iniciando processamento para analise de profiling...\n");
 
-  funcao_rapida(1000);
-  funcao_lenta_gargalo(200);
+  funcao_rapida(100000);
+  funcao_lenta_gargalo(20000);
 
   printf("Processamento concluido com sucesso!\n");
   return 0;
